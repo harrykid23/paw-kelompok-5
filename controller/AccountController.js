@@ -50,7 +50,7 @@ module.exports = (Account)=>{
         const new_account = req.body;
         Account.findOne({account_id: account_id}, (err, data)=>{
             if (err || !data) {
-                res.status(500).send(err.message || "Terjadi kesalahan, akun tidak ditemukan");
+                res.status(500).send((err && err.message) || "Terjadi kesalahan, akun tidak ditemukan");
                 return;
             }
 
