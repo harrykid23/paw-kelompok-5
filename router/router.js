@@ -10,7 +10,7 @@ const router = (app, mongoose) => {
         }
     });
     const upload = multer({ storage: storage });
-// tes
+
     // Account Model
     const Account = require('../models/Account.js')(mongoose);
     // Account Controller
