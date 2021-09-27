@@ -27,7 +27,5 @@ app.listen(PORT, ()=>{
 
 //Entry poin and first route domain
 app.get('/',(req,res)=>{
-    res.json({
-        message:"Selamat datang! Perkenalkan kami kelompok 5"
-    })
+    res.send("Hello!");
 });

@@ -27,6 +27,18 @@ const AccountModel = (mongoose)=>{
         bio: {
             type: String,
             default: ""
+        },
+        follower:{
+            type:Number,
+            default:0
+        },
+        following:{
+            type:Number,
+            default:0
+        },
+        isPrivate:{
+            type: Boolean,
+            default:false
         }
     }, { collection: COLLECTION });
     return mongoose.model(MODEL_NAME, Schema);
