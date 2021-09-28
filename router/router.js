@@ -38,8 +38,10 @@ const router = (app, mongoose) => {
     const FileController = require('../controller/FileController.js')();
     app.get("/download/:filename", FileController.download);
 
-    //Comment Controller
-    const CommentController = require('../controller/CommentController.js')();
+    //Comment Model
+    const Comment = require('../models/Comment.js')(mongoose);
+     //Comment Controller
+    const CommentController = require('../controller/CommentController.js')(Comment,Post,Account);
     app.post("/comment", CommentController.create);
     app.get("/comment",CommentController.findAll);
 }
