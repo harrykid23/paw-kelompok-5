@@ -27,5 +27,5 @@ app.listen(PORT, ()=>{
 
 //Entry poin and first route domain
 app.get('/',(req,res)=>{
-    res.send("Hello!");
+    res.send("Hello! Welcome to Instagram API");
 });
