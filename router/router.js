@@ -42,8 +42,8 @@ const router = (app, mongoose) => {
     const Comment = require('../models/Comment.js')(mongoose);
      //Comment Controller
     const CommentController = require('../controller/CommentController.js')(Comment,Post,Account);
-    app.post("/comment", CommentController.create);
-    app.get("/comment",CommentController.findAll);
+    app.post("/comments", CommentController.create);
+    app.get("/comments",CommentController.findAll);
 }
 
 module.exports = router;

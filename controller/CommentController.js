@@ -30,7 +30,11 @@ module.exports = (Comment,Post,Account) =>{
                 }
 
                 //if account and post exist, create comment
-                const newComment = new Comment()
+                const newComment = new Comment({
+                    account_id : req.body.account_id,
+                    post_id : req.body.post_id,
+                    comment : req.body.comment
+                })
                 newComment.save((err)=>{
                     if(err){
                         res.status(500).send(err.message || "Terjadi kesalahan");
