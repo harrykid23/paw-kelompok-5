@@ -4,7 +4,7 @@
 - Dicky Muhammad Rizal (19/440306/TK/48633)
 - Dascha Abhista Wachnata (19/444044/TK/49240)
 - Harry Krisna Darmawan (19/446781/TK/49886)
-- Muhammad Fariz Al-Pasha (19/444061/TK/49157)
+- Muhammad Fariz Al-Pasha (19/444061/TK/49257)
 <br/>
 <br/>
 
