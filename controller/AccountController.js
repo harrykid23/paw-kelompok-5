@@ -36,8 +36,25 @@ module.exports = (Account)=>{
         });
     }
 
-    const validateToken = (req, res)=>{
-        res.send({success: 1})
+    const getSelfAccount = (req, res)=>{
+        // from jwt encryption
+        const user = res.user;
+
+        Account.findOne({__id: user.account_id}, (err, data)=>{
+            if (err) {
+                res.status(500).send(err.message || "Terjadi kesalahan");
+                return;
+            }
+            if (!data){
+                res.status(404).send("Data tidak ditemukan");
+                return;
+            }
+            delete data.password;
+            res.json({
+                success: 1,
+                data
+            });
+        });
     }
 
     const create = (req, res, next)=>{
@@ -142,7 +159,7 @@ module.exports = (Account)=>{
 
     return {
         login,
-        validateToken,
+        getSelfAccount,
         findAll,
         create,
         findById,

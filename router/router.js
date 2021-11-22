@@ -20,7 +20,7 @@ const router = (app, mongoose) => {
     // Account Route List
     app.post("/accounts/login", AccountController.login);
     app.get("/accounts", AccountController.findAll);
-    app.post("/accounts/validateToken", validateToken, AccountController.validateToken);
+    app.get("/accounts/self", validateToken, AccountController.getSelfAccount);
     app.get("/accounts/:account_id", AccountController.findById);
     app.post("/accounts", upload.single('profile_pic'), AccountController.create);
     app.put("/accounts/:account_id", AccountController.edit);
