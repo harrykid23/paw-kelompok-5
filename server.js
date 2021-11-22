@@ -2,7 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require("cors");
 const router = require('./router/router.js');
+
+// avoid cors error
+app.use(cors())
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json({limit: '50mb'}));
