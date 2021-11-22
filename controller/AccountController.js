@@ -1,5 +1,45 @@
 module.exports = (Account)=>{
     // Methods
+    const login = (req, res)=>{
+        if(!req.body){
+            res.status(400).send({
+                message: "Body tidak boleh kosong!"
+            });
+        }
+    
+        const user = {
+            username: req.body.username,
+            password: req.body.password
+        }
+
+        const sendToken = (userFound, res)=>{
+            const {jwt, secretKey} = require('../jwt/authToken');
+            const encryptedData = {account_id: userFound.__id, username: userFound.username};
+            const accessToken = jwt.sign(encryptedData, secretKey, {expiresIn: '10m'});
+
+            res.send({success: 1, accessToken: accessToken, account_id: userFound.__id})
+        }
+
+        Account.findOne({username: user.username, password: user.password}, (err, data)=>{
+            if (err || !data) {
+                Account.findOne({email: user.username, password: user.password}, (err2, data2)=>{
+                    if (err2 || !data2){
+                        res.status(500).send((err2 && err2.message) || "Terjadi kesalahan, akun tidak ditemukan");
+                        return;
+                    }else{
+                        sendToken(data2, res);
+                    }
+                })
+            }else{
+                sendToken(data, res);
+            }
+        });
+    }
+
+    const validateToken = (req, res)=>{
+        res.send({success: 1})
+    }
+
     const create = (req, res, next)=>{
         // Data diperlukan : username, email, password, name, profile_pic
         // optional : bio
@@ -101,6 +141,8 @@ module.exports = (Account)=>{
     }
 
     return {
+        login,
+        validateToken,
         findAll,
         create,
         findById,
