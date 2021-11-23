@@ -14,10 +14,10 @@ module.exports = (Account)=>{
 
         const sendToken = (userFound, res)=>{
             const {jwt, secretKey} = require('../jwt/authToken');
-            const encryptedData = {account_id: userFound.__id, username: userFound.username};
+            const encryptedData = {account_id: userFound._id, username: userFound.username};
             const accessToken = jwt.sign(encryptedData, secretKey, {expiresIn: '10m'});
 
-            res.send({success: 1, accessToken: accessToken, account_id: userFound.__id})
+            res.send({success: 1, accessToken: accessToken, account_id: userFound._id})
         }
 
         Account.findOne({username: user.username, password: user.password}, (err, data)=>{
