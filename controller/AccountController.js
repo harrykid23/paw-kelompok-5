@@ -40,7 +40,7 @@ module.exports = (Account)=>{
         // from jwt encryption
         const user = res.user;
 
-        Account.findOne({__id: user.account_id}, (err, data)=>{
+        Account.findOne({_id: user.account_id}, (err, data)=>{
             if (err) {
                 res.status(500).send(err.message || "Terjadi kesalahan");
                 return;
@@ -87,7 +87,7 @@ module.exports = (Account)=>{
     const findById = (req, res)=>{
         // Data diperlukan : -
         const account_id = req.params.account_id;
-        Account.findOne({__id: account_id}, (err, data)=>{
+        Account.findOne({_id: account_id}, (err, data)=>{
             if (err) {
                 res.status(500).send(err.message || "Terjadi kesalahan");
                 return;
@@ -128,7 +128,7 @@ module.exports = (Account)=>{
     const editProfilePic = (req, res)=>{
         // Data diperlukan : profile_pic
         const account_id = req.params.account_id;
-        Account.findOne({__id: account_id}, (err, data)=>{
+        Account.findOne({_id: account_id}, (err, data)=>{
             if(err || !data){
                 res.status(500).send(err.message || "Terjadi kesalahan");
                 return
