@@ -31,5 +31,5 @@ app.listen(PORT, ()=>{
 
 //Entry poin and first route domain
 app.get('/',(req,res)=>{
-    res.send("Hello! Welcome to Instagram API");
+    res.send("Hello! Welcome to Tetigram API");
 });
